@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from .models import *
 
 def index(request):
     if 'userid' in request.session:
@@ -15,6 +16,41 @@ def sign_in(request):
 
 def register_form(request):
     return render(request, "register_form.html")
+
+def registration(request):
+    errors = User.objects.basic_validator(request.POST, 'registration')
+    if len(errors)>0:
+        for key,value in errors.items():
+            messages.error(request,value)
+        return redirect('/register_form')
+    else:
+        password = request.POST['password']
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        # print(pw_hash)
+        
+        User.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'], password = pw_hash)
+
+        return redirect('/')
+
+def login(request):
+    errors = User.objects.basic_validator(request.POST, 'login')
+    if len(errors)>0:
+        for key,value in errors.items():
+            messages.error(request,value)
+        return redirect('/sign_in')
+    else:
+        user = User.objects.filter(email=request.POST['email'])
+        if user:
+            logged_user = user[0]
+            if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
+                request.session['userid'] = logged_user.id
+                return redirect("/") #redirect to success route
+        # return redirect('/')
+
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
 
 
 # Create your views here.
