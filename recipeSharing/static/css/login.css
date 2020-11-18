@@ -1,0 +1,63 @@
+.container{
+    background-image:url('../login_image3.jpg');
+
+    background-position-y: 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.backwall{
+    background: rgba(245, 245, 245, 0.6);
+    display: block;
+    padding: 10px 10px 0px 10px;
+    color: black;
+    margin-top: 50px;
+    height: 75px;
+    width: 860px;
+    text-align: center;
+    border: 1px solid black;
+}
+.messages{
+    color: red;
+}
+.register{
+    display: inline-block;
+    padding: 25px 25px 25px 20px;
+    margin-right: 100px;
+    margin-left: 20px;
+    border: 1px solid black;
+}
+
+.register_here{
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.login{
+    display: inline-block;
+    padding: 30px;
+    border: 1px solid black;
+    vertical-align: top;
+    background: rgba(245, 245, 245, 0.6);
+    margin-top: 20px;
+}
+h1{
+    margin-bottom: 20px;
+}
+
+h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-decoration: underline;
+}
+p{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+input{
+    padding-right: 15px;
+}
+#footer1{
+    color: white;
+}
