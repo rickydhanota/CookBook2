@@ -1,0 +1,90 @@
+#image1{
+    width:360px; 
+    /* height:280px;  */
+    background-image:url('../images/ingredients.jpg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    margin-left: 13px;
+}
+
+#image2{
+    width:360px; /*width of your image*/
+    /* height:280px;  */
+    background-image:url('../images/people_eating.jpg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+}
+
+#image3{
+    width:360px; /*width of your image*/
+    /* height:280px;  */
+    background-image:url('../images/cupcake.jpg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+}
+h2{
+    background: rgba(245, 245, 245, 0.6);
+    text-align: center;
+    vertical-align: bottom;
+    padding: 10px 0px 10px 0px;
+    color: black;
+    margin-top: 50px;
+}
+
+a:visited, a:link{
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+a h2:hover{
+    text-decoration: underline;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+#image1 a h2{
+    margin-top: 222px;
+    margin-bottom: 0px;
+}
+#image2 a h2{
+    margin-top: 222px;
+    margin-bottom: 0px;
+}
+
+#image3 a h2{
+    margin-top: 222px;
+    margin-bottom: 0px;
+}
+
+#navbar{
+    background: rgb(33,33,33);
+    background: linear-gradient(360deg, rgba(33,33,33,1) 0%, 
+    rgba(52,52,52,1) 50%, rgba(33,33,33,1) 100%);
+    border-radius: 5px;
+}
+.carousel-item{
+    height: 630px;
+}
+
+.container{
+    background-image:url('../images/background2.jpg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #dbd7d6; */
+}
+footer a{
+    color: black;
+}
