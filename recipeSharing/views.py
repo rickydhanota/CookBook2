@@ -13,5 +13,8 @@ def index(request):
 def sign_in(request):
     return render(request, "sign_in.html")
 
+def register_form(request):
+    return render(request, "register_form.html")
+
 
 # Create your views here.

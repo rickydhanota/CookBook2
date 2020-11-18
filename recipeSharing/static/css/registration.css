@@ -1,5 +1,5 @@
 .container{
-    background-image:url('../images/login_image3.jpg');
+    background-image:url('../images/login_image1.jpg');
 
     background-position-y: 25%;
     background-repeat: no-repeat;
@@ -21,10 +21,10 @@
 }
 .register{
     display: inline-block;
-    padding: 25px 25px 25px 20px;
-    margin-right: 100px;
-    margin-left: 20px;
+    padding: 30px 30px 30px 30px;
+    margin-top: 15px;
     border: 1px solid black;
+    background: rgba(245, 245, 245, 0.6);
 }
 
 .register_here{
@@ -33,14 +33,6 @@
     margin-top: 10px;
 }
 
-.login{
-    display: inline-block;
-    padding: 30px;
-    border: 1px solid black;
-    vertical-align: top;
-    background: rgba(245, 245, 245, 0.6);
-    margin-top: 20px;
-}
 h1{
     margin-bottom: 20px;
 }
