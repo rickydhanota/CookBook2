@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import *
+from django.contrib import messages
+import bcrypt
 
 def index(request):
     if 'userid' in request.session:
@@ -26,9 +28,10 @@ def registration(request):
     else:
         password = request.POST['password']
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-        # print(pw_hash)
         
-        User.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'], password = pw_hash)
+        logged_user = User.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'], password = pw_hash)
+        #Removed the phone info for the logged_user
+        request.session['userid'] = logged_user.id
 
         return redirect('/')
 
