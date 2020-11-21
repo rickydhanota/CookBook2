@@ -1,4 +1,4 @@
-__init__.py
 db.sqlite3
-migrations
-__pycache__
+migrations/
+__pycache__/
+recipeSharing/__pycache__
