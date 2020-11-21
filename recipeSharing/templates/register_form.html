@@ -30,7 +30,7 @@
 
     <div class="register">
         <h2>Registration:</h2>
-        <form action="/registration_success" method="POST">
+        <form action="{% url 'registration' %}" method="POST">
             {% csrf_token %}
             <p class="mb-1 font-weight-bold">First Name:</p>
             <input type="text" name="first_name" placeholder="Enter First Name Here" size="22" class="mb-3"><br>
