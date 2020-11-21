@@ -62,7 +62,13 @@ def founders(request):
     return render(request, "founders.html", context)
 
 def popularDishes(request):
-    pass
+    user = User.objects.get(id = request.session['userid'])
+    # print(user.profilepic)
+
+    context = {
+        'user':user,
+    }
+    return render(request, "popularDishes.html", context) 
 
 def userProfile(request, id):
     user = User.objects.get(id = request.session['userid'])
