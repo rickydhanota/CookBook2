@@ -1,0 +1,34 @@
+img{
+    width: 20%;
+    height: 20%;
+}
+a:visited, a:link{
+    color: black;
+}
+a:hover{
+    color: dodgerblue;
+}
+a{
+    text-decoration: none;
+}
+#navbar{
+    background: rgb(33,33,33);
+    background: linear-gradient(360deg, rgba(33,33,33,1) 0%, rgba(52,52,52,1) 50%, rgba(33,33,33,1) 100%);
+    border-radius: 5px;
+}
+.container{
+    background-image:url('../images/background2.jpg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #dbd7d6; */
+}
+h1{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.userinfo{
+    font-style: italic;
+    font-size: 19px;
+}

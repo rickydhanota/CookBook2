@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>User Profile</title>
+</head>
+<body class="container">
+      
+    <h1 class="text-center">{{user.first_name}} {{user.last_name}}'s Profile Page</h1>
+    
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="/founders">Founders</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#">Careers</a>
+            </li>
+
+            {% if 'userid' in request.session %}
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="userprofile/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="{% url 'sign_in' %}">Sign in</a>
+                </li>
+            {% endif %}
+          </ul>
+
+          <form action="search" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+    </nav>
+
+    <h2 class="ml-3">User's Profile Picture</h2>
+        {% if user.profilepic %}
+            <img src="{{user.profilepic}}" alt="profile picture" class="ml-3 mt-2 d-inline-block"><br><br>
+            <a href="/deletepicture" class="ml-3 d-inline-block"> <button>Delete Profile Picture</button> </a><br><br>
+
+        {% else %}
+
+            <form action="/adding_profile_pic/{{user.id}}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="picture" class="d-inline-block">
+                <button type="submit" class="d-inline-block">Upload Profile Picture</button><br>
+            </form>
+        {% endif %}
+
+        <div id="textbody" class="ml-3">
+            <h2 class="titleinfo mb-2">User's Full Name</h2>
+            <p class="userinfo">{{user.first_name}} {{user.last_name}}</p><br>
+            <h2 class="titleinfo">User's Email</h2>
+            <p class="userinfo">{{user.email}}</p><br>
+            <h2 class="titleinfo">When Did You Join?</h2>
+            <p class="userinfo">{{user.created_at}}</p><br>
+        </div>
+
+
+    <div class="col-12">
+        <footer class="my-5 pt-5 light text-muted text-center text-center">
+        {% comment %} <ul> {% endcomment %}
+        <a class="text-black" href="#">Advertisements</a>  <a href="privacypolicy">Private Policy</a> <a href="#">Help</a> <a href="#">About</a> <a href="terms">Terms of Service</a>
+        <br>
+        Copyright &copy;  2020
+        {% comment %} </ul> {% endcomment %}
+        </footer>
+    </div>
+    
+</body>
+</html>

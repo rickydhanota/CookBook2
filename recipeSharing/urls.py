@@ -9,4 +9,6 @@ urlpatterns = [
     path("login/", views.login, name = "login"),
     path("logout/", views.logout, name = "logout"),
     path("founders/", views.founders, name = "founders"),
+    path("popularDishes/", views.popularDishes, name = "popularDishes"),
+    path('userprofile/<int:id>/', views.userProfile),
 ]

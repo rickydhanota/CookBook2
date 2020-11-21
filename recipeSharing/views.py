@@ -50,7 +50,6 @@ def login(request):
                 return redirect("/") #redirect to success route
         # return redirect('/')
 
-
 def logout(request):
     request.session.flush()
     return redirect('/')
@@ -61,6 +60,18 @@ def founders(request):
         'user':user,
     }
     return render(request, "founders.html", context)
+
+def popularDishes(request):
+    pass
+
+def userProfile(request, id):
+    user = User.objects.get(id = request.session['userid'])
+    # print(user.profilepic)
+
+    context = {
+        'user':user,
+    }
+    return render(request, "userprofile.html", context)
 
 
 # Create your views here.
