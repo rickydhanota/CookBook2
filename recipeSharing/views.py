@@ -55,5 +55,12 @@ def logout(request):
     request.session.flush()
     return redirect('/')
 
+def founders(request):
+    user = User.objects.get(id = request.session['userid'])
+    context = {
+        'user':user,
+    }
+    return render(request, "founders.html", context)
+
 
 # Create your views here.
