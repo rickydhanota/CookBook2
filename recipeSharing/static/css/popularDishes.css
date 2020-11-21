@@ -1,0 +1,48 @@
+#navbar{
+    background: rgb(33,33,33);
+    background: linear-gradient(360deg, rgba(33,33,33,1) 0%, 
+    rgba(52,52,52,1) 50%, rgba(33,33,33,1) 100%);
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  #actions{
+    display: inline;
+    margin-left: 200px;
+    
+  }
+  #filter_bar{
+    display: inline;
+    width: 270px;
+    height: 41px;
+    margin-left: 10px;
+  }
+  #create_recipe{
+    display: inline;
+  }
+  #clear_recipe{
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+  }
+  #filter_search{
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+  }
+  
+  form{
+    display: inline;
+  }
+  .container{
+    background-image:url('../background2.jpg');
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #dbd7d6; */
+  }
+  footer{
+    padding-bottom: 10px;
+  }
+  footer a{
+    color: black;
+  }
+  
