@@ -11,4 +11,5 @@ urlpatterns = [
     path("founders/", views.founders, name = "founders"),
     path("popularDishes/", views.popularDishes, name = "popularDishes"),
     path('userprofile/<int:id>/', views.userProfile),
+    path("createRecipe", views.createRecipe, name = "createRecipe"),
 ]

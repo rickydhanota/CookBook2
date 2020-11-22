@@ -60,7 +60,7 @@
             <a class="btn btn-primary btn-lg" href="/sign_in" id="create_recipe" role="button">Login to Create Recipes</a>                      
 
         {% else %}
-            <a class="btn btn-primary btn-lg" href="/recipe/create" id="create_recipe" role="button">Create Recipe</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'createRecipe' %}" id="create_recipe" role="button">Create Recipe</a>
         {% endif %}
 
             <form action="/recipe/filter" method="post" id="recipe_filter">
