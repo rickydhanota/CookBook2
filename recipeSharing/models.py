@@ -45,6 +45,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     steps = models.TextField()
     dishImage = models.ImageField(null = True)
+    user = models.ForeignKey(User, related_name = "recipes", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 

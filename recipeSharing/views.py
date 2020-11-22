@@ -90,5 +90,31 @@ def createRecipe(request):
 
     return render(request, 'createRecipe.html', context)
 
+def addRecipe(request):
+    if 'userid' not in request.session:
+        return redirect('/')
+
+    # if request.method == "POST":
+    #     # request.Files used for uploading anything
+    #     pic = request.FILES["Image"]
+    # fs = FileSystemStorage()
+    # user_pic = fs.save(pic.name, pic)
+    # url = fs.url(user_pic)
+
+    dish = Recipe.objects.create(title = request.POST["recipeName"], description = request.POST["description"], ingredients = request.POST["ingredients"], steps = request.POST["steps"])
+
+    return redirect(f'/recipeConfirmation/{dish.id}/')
+
+def recipeConfirmation(request, id):
+    dish = Recipe.objects.get(id = id)
+    user = User.objects.get(id=request.session['userid'])
+
+    context = {
+        "user": user,
+        "dish": dish,
+    }
+    pass
+    
+
 
 # Create your views here.

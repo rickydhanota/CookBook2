@@ -53,7 +53,7 @@
 
     <div class="add_recipe col-12">
         <!-- print out any errors if validation fails for either registeration or logging in -->
-        <form action="/recipe/add" enctype = "multipart/form-data" method="post">
+        <form action="addRecipe" enctype = "multipart/form-data" method="POST">
             {% csrf_token %}
 
             <div class="col-7">
