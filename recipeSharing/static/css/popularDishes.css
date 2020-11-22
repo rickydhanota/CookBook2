@@ -5,33 +5,33 @@
     border-radius: 5px;
     margin-top: 10px;
   }
-  #actions{
+#actions{
     display: inline;
     margin-left: 200px;
     
   }
-  #filter_bar{
+#filter_bar{
     display: inline;
     width: 270px;
     height: 41px;
     margin-left: 10px;
   }
-  #create_recipe{
+#create_recipe{
     display: inline;
   }
-  #clear_recipe{
+#clear_recipe{
     padding: 5px 10px 5px 10px;
     margin-left: 10px;
   }
-  #filter_search{
+#filter_search{
     padding: 5px 10px 5px 10px;
     margin-left: 10px;
   }
   
-  form{
+form{
     display: inline;
   }
-  .container{
+.container{
     background-image:url('../images/background2.jpg');
   
     background-position: center;
@@ -39,10 +39,10 @@
     background-size: cover;
     /* background-color: #dbd7d6; */
   }
-  footer{
+footer{
     padding-bottom: 10px;
   }
-  footer a{
+footer a{
     color: black;
   }
   

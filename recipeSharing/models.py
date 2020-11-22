@@ -39,4 +39,14 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now = True)
     objects = UserManager()
 
+class Recipe(models.Model):
+    title = models.CharField(max_length = 255)
+    description = models.TextField()
+    ingredients = models.TextField()
+    steps = models.TextField()
+    dishImage = models.ImageField(null = True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+
 # Create your models here.

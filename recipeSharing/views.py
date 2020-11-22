@@ -79,5 +79,16 @@ def userProfile(request, id):
     }
     return render(request, "userprofile.html", context)
 
+def createRecipe(request):
+    if 'userid' not in request.session:
+        return redirect('/')
+
+    user = User.objects.get(id=request.session['userid'])
+    context = {
+        "user": user
+    }
+
+    return render(request, 'createRecipe.html', context)
+
 
 # Create your views here.
