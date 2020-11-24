@@ -63,10 +63,12 @@ def founders(request):
 
 def popularDishes(request):
     user = User.objects.get(id = request.session['userid'])
+    dishes = Recipe.objects.all()
     # print(user.profilepic)
 
     context = {
         'user':user,
+        "dishes": dishes,
     }
     return render(request, "popularDishes.html", context) 
 
@@ -123,6 +125,17 @@ def deleteDish(request, id):
     return redirect(f"/userprofile/{user.id}/")
 
 def editDish(request, id):
+    dish = Recipe.objects.get(id = id)
+    user = User.objects.get(id=request.session['userid'])
+
+    context = {
+        "user": user,
+        "dish": dish,
+    }
+    return render(request, "editDish.html", context)
+
+
+def confirmEdits(request, id):
     user = User.objects.get(id=request.session['userid'])
     dish = Recipe.objects.get(id = id)
     dish.title = request.POST["recipeName"]
