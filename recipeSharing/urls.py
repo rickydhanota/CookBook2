@@ -13,5 +13,5 @@ urlpatterns = [
     path('userprofile/<int:id>/', views.userProfile),
     path("createRecipe", views.createRecipe, name = "createRecipe"),
     path("addRecipe", views.addRecipe, name = "addRecipe"),
-    path("recipeConfirmation/<int: id>/", views.recipeConfirmation, name = "recipeConfirmation"),
+    path("recipeConfirmation/<int:id>/", views.recipeConfirmation, name = "recipeConfirmation"),
 ]

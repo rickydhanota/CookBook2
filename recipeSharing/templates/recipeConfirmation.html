@@ -6,13 +6,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="/static/css/recipe_info.css">
+    <link rel="stylesheet" href="{% static 'css/recipeconfirmation.css' %}">
 </head>
 
-<body class="recipe_info bg-light">
+<body class= "container">
     <div class="form-group row">
         <em><h1 class="text">Welcome {{user.first_name}}!</h1></em>
-    </div><br>
+    </div>
 
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,32 +70,26 @@
     
         <div class="col-12">
             <br>
-            <em><strong><h1>{{recipe.name}}</h1></strong></em>
+            <em><strong><h1>{{dish.title}}</h1></strong></em>
             <br><br>
-            <em><h4>Average rating: {{rating}} stars</h4></em>
-            <br>
-            <em><h6>Created by: {{recipe.owner.first_name}} {{recipe.owner.last_name}}</h6></em>
+            <!-- <em><h4>Average rating: {{rating}} stars</h4></em>
+            <br> -->
+            <em><h6>Created by: {{dish.user.first_name}} {{dish.user.last_name}}</h6></em>
             <br>
             <em><u><h4 class="heading">Description: </h4></u></em>
             <br>
-            {% for summary in summaries %}
-                <b><p class="info">{{ summary }}</p></b>
+                <b><p class="info">{{dish.description}}</p></b>
                 <br>
-            {% endfor %}
             <em><u><h4 class="heading">Ingredients: </h4></u></em>
             <br>
-            {% for ingredient in ingredients %}
-                <b><p class="info">{{ ingredient }}</p></b>
+                <b><p class="info">{{dish.ingredients}}</p></b>
                 <br>
-            {% endfor %}
             <br>
             <em><u><h4 class="heading">Steps: </h4></u></em>
             <br>
-            {% for step in steps %}
-                <b><p class="info">{{ step }}</p></b>
+                <b><p class="info">{{dish.steps}}</p></b>
                 <br>
-            {% endfor %}
-            {% if user.id == recipe.owner.id %}
+            {% if user.id == dish.user.id %}
                 <br>
                 <a class="btn btn-danger" href="/recipe/delete/{{recipe.id}}" role="button">Delete Recipe</a>
                 <a class="btn btn-success" href="/recipe/edit/{{recipe.id}}" role="button">Edit Recipe</a>
@@ -106,8 +100,8 @@
 
                         
             <div class="right_side">
-                <form action="/review/add" method="post" id="review" review="{{recipe.id}}">
 
+                <form action="/review/add" method="post" id="review" review="{{recipe.id}}">
                     {% csrf_token %}
 
                     <div class="form-group">
@@ -115,6 +109,7 @@
                         <br>
                         <textarea class="form-control" id="content" name="Review" rows="2" cols="55"></textarea>
                     </div>
+
                     <div class="form-group row">
                         <div class="col-12">
                             <label for="Rating">Rating:</label>
@@ -127,14 +122,17 @@
                             </select>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit Review</button>
                     <input name="recipe_id" type="hidden" value="{{recipe.id}}">  
+
                 </form>
+
                     <br><br>
                 <u><em><h3 class="text text-left">Reviews:</h3></em></u>
                 <br>
 
-                <div class="form-group row" id="reviews">
+                <!-- <div class="form-group row" id="reviews">
                     {% for review in Reviews %}
                         <br><br>
                         <div class="card-deck col-12 bg-dark-rounded ajax" id="{{review.id}}">
@@ -161,7 +159,8 @@
                             </div>
                         </div>
                     {% endfor %}
-                </div>
+                </div> -->
+
             </div>
 
 
@@ -178,6 +177,6 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script src="{% static 'script.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

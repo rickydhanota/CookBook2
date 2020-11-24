@@ -100,8 +100,9 @@ def addRecipe(request):
     # fs = FileSystemStorage()
     # user_pic = fs.save(pic.name, pic)
     # url = fs.url(user_pic)
+    user = User.objects.get(id=request.session['userid'])
 
-    dish = Recipe.objects.create(title = request.POST["recipeName"], description = request.POST["description"], ingredients = request.POST["ingredients"], steps = request.POST["steps"])
+    dish = Recipe.objects.create(title = request.POST["recipeName"], description = request.POST["description"], ingredients = request.POST["ingredients"], steps = request.POST["steps"], user = user)
 
     return redirect(f'/recipeConfirmation/{dish.id}/')
 
