@@ -113,7 +113,7 @@ def recipeConfirmation(request, id):
         "user": user,
         "dish": dish,
     }
-    pass
+    return render(request, "recipeConfirmation.html", context)
     
 
 
