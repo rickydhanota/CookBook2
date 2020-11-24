@@ -115,6 +115,22 @@ def recipeConfirmation(request, id):
         "dish": dish,
     }
     return render(request, "recipeConfirmation.html", context)
+
+def deleteDish(request, id):
+    user = User.objects.get(id=request.session['userid'])
+    dish = Recipe.objects.get(id = id)
+    dish.delete()
+    return redirect(f"/userprofile/{user.id}/")
+
+def editDish(request, id):
+    user = User.objects.get(id=request.session['userid'])
+    dish = Recipe.objects.get(id = id)
+    dish.title = request.POST["recipeName"]
+    dish.description = request.POST["description"]
+    dish.ingredients = request.POST["ingredients"]
+    dish.steps = request.POST["steps"]
+    dish.save()
+    return redirect(f"/recipeConfirmation/{dish.id}/")
     
 
 
