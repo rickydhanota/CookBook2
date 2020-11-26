@@ -19,7 +19,7 @@ urlpatterns = [
     path("dish/confirmEdits/<int:id>", views.confirmEdits),
     path("popularDesserts/", views.popularDesserts, name = "popularDesserts"),
     path("createDessertRecipe/", views.createDessertRecipe, name = "createDessertRecipe"),
-    path("addDessertRecipe/", views.addRecipe, name = "addDessertRecipe"),
+    path("addDessertRecipe/", views.addDessertRecipe, name = "addDessertRecipe"),
     path("dessertConfirmation/<int:id>/", views.dessertConfirmation, name = "dessertConfirmation"),
     path("dessert/delete/<int:id>", views.deleteDish),
     path("dessert/edit/<int:id>", views.editDessert),

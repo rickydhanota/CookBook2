@@ -8,7 +8,6 @@
 #actions{
     display: inline;
     margin-left: 200px;
-    
   }
 #filter_bar{
     display: inline;
@@ -45,4 +44,31 @@ footer{
 footer a{
     color: black;
   }
-  
+
+#image_container{
+    display: flex;
+    margin: auto;
+  }
+#image_container img{
+  margin-left: 120px; 
+}
+#dessert_details{
+  margin-left: 100px;
+  margin: auto;
+}
+#dessert_details h2{
+  margin-bottom: 15px;
+  text-align: justify;
+}
+#dessert_details h4{
+  margin-bottom: 15px;
+  text-align: justify;
+}
+#dessert_details h6{
+  margin-bottom: 15px;
+  text-align: justify;
+}
+#dessert_details a{
+  margin-bottom: 15px;
+  text-align: justify;
+} 
