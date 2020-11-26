@@ -10,7 +10,7 @@
 
 </head>
 <body class="container">
-    <em><h1 class="active">Create Recipe</h1></em>
+    <em><h1 class="active">Create Dessert Recipe</h1></em>
         <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 ">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -53,13 +53,13 @@
 
     <div class="add_recipe col-12">
         <!-- print out any errors if validation fails for either registeration or logging in -->
-        <form action="{% url 'addRecipe' %}" enctype = "multipart/form-data" method="POST">
+        <form action="{% url 'addDessertRecipe' %}" enctype = "multipart/form-data" method="POST">
             {% csrf_token %}
 
             <div class="col-7">
                     <div class="row">
                         <div class="col-12">
-                            <h6>Recipe Title</h6>
+                            <h6>Dessert Title</h6>
                             <input type="text" id="recipe_name" class="form-control col-12" name="recipeName">
                         </div>
                     </div>
