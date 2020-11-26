@@ -189,5 +189,32 @@ def dessertConfirmation(request, id):
     }
     return render(request, "dessertConfirmation.html", context)
 
+def deleteDessert(request, id):
+    user = User.objects.get(id=request.session['userid'])
+    dessert = Dessert.objects.get(id = id)
+    dessert.delete()
+    return redirect(f"/userprofile/{user.id}/")
+
+def editDessert(request, id):
+    dessert = Dessert.objects.get(id = id)
+    user = User.objects.get(id=request.session['userid'])
+
+    context = {
+        "user": user,
+        "dessert": dessert,
+    }
+    return render(request, "editDessert.html", context)
+
+
+def confirmDessertEdits(request, id):
+    user = User.objects.get(id=request.session['userid'])
+    dessert = Dessert.objects.get(id = id)
+    dessert.title = request.POST["recipeName"]
+    dessert.description = request.POST["description"]
+    dessert.ingredients = request.POST["ingredients"]
+    dessert.steps = request.POST["steps"]
+    dessert.save()
+    return redirect(f"/dessertConfirmation/{dessert.id}/")
+
 
 # Create your views here.

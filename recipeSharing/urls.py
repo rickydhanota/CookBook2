@@ -21,4 +21,7 @@ urlpatterns = [
     path("createDessertRecipe/", views.createDessertRecipe, name = "createDessertRecipe"),
     path("addDessertRecipe/", views.addRecipe, name = "addDessertRecipe"),
     path("dessertConfirmation/<int:id>/", views.dessertConfirmation, name = "dessertConfirmation"),
+    path("dessert/delete/<int:id>", views.deleteDish),
+    path("dessert/edit/<int:id>", views.editDessert),
+    path("dessert/confirmEdits/<int:id>", views.confirmDessertEdits),
 ]
