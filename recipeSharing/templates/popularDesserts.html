@@ -51,7 +51,7 @@
         </nav>      
     </div>
 
-    <u><em><h1 class="text-center">Popular Recipes</h1></em></u>
+    <u><em><h1 class="text-center">Popular Dessert Recipes</h1></em></u>
     <br>
 
     <div id="actions" class="col-2">
@@ -60,7 +60,7 @@
             <a class="btn btn-primary btn-lg" href="/sign_in" id="create_recipe" role="button">Login to Create Recipes</a>                      
 
         {% else %}
-            <a class="btn btn-primary btn-lg" href="{% url 'createRecipe' %}" id="create_recipe" role="button">Create Recipe</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'createDessertRecipe' %}" id="create_recipe" role="button">Create Dessert Recipe</a>
         {% endif %}
 
             <form action="/recipe/filter" method="post" id="recipe_filter">

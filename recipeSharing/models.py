@@ -49,5 +49,15 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 
+class Dessert(models.Model):
+    title = models.CharField(max_length = 255)
+    description = models.TextField()
+    ingredients = models.TextField()
+    steps = models.TextField()
+    dessertImage = models.ImageField(null = True)
+    user = models.ForeignKey(User, related_name = "dessert_recipes", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+
 
 # Create your models here.

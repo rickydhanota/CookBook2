@@ -144,7 +144,24 @@ def confirmEdits(request, id):
     dish.steps = request.POST["steps"]
     dish.save()
     return redirect(f"/recipeConfirmation/{dish.id}/")
-    
+
+def popularDesserts(request):
+    user = User.objects.get(id=request.session['userid'])
+    context = {
+        "user": user,
+    }
+    return render(request, "popularDesserts.html", context)
+
+def createDessertRecipe(request):
+    if 'userid' not in request.session:
+        return redirect('/')
+
+    user = User.objects.get(id=request.session['userid'])
+    context = {
+        "user": user
+    }
+
+    return render(request, 'createDessertRecipe.html', context)
 
 
 # Create your views here.
