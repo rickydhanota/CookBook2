@@ -122,7 +122,7 @@ def deleteDish(request, id):
     user = User.objects.get(id=request.session['userid'])
     dish = Recipe.objects.get(id = id)
     dish.delete()
-    return redirect(f"/userprofile/{user.id}/")
+    return redirect("/popularDishes/")
 
 def editDish(request, id):
     dish = Recipe.objects.get(id = id)
@@ -146,9 +146,13 @@ def confirmEdits(request, id):
     return redirect(f"/recipeConfirmation/{dish.id}/")
 
 def popularDesserts(request):
-    user = User.objects.get(id=request.session['userid'])
+    user = User.objects.get(id = request.session['userid'])
+    desserts = Dessert.objects.all()
+    # print(user.profilepic)
+
     context = {
-        "user": user,
+        'user':user,
+        "desserts": desserts,
     }
     return render(request, "popularDesserts.html", context)
 
@@ -193,7 +197,7 @@ def deleteDessert(request, id):
     user = User.objects.get(id=request.session['userid'])
     dessert = Dessert.objects.get(id = id)
     dessert.delete()
-    return redirect(f"/userprofile/{user.id}/")
+    return redirect("/popularDesserts/")
 
 def editDessert(request, id):
     dessert = Dessert.objects.get(id = id)
