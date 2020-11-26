@@ -53,44 +53,25 @@
         </div>
     </nav>
     
-    <div class="left_side">
-        <div class="col-12">
+    <div class= "dish">
+        <div class="flex-child">
             <img src="{{recipe.image.url}}" width="500" height="500">
             <!-- Might want to try doing auto here -->
         </div>
     
-        {% if messages %}
-            <br>
-            {% for message in messages %}
-                <ul>   
-                    <h5><li class="text text-danger">{{ message }}</li></h5>
-                </ul>    
-            {% endfor %}
-        {% endif %}
-    
-        <div class="col-12">
-            <br>
+        <div class="flex-child">
             <em><strong><h1>{{dish.title}}</h1></strong></em>
-            <br><br>
             <!-- <em><h4>Average rating: {{rating}} stars</h4></em>
             <br> -->
             <em><h6>Created by: {{dish.user.first_name}} {{dish.user.last_name}}</h6></em>
             <br>
             <em><u><h4 class="heading">Description: </h4></u></em>
-            <br>
                 <b><p class="info">{{dish.description}}</p></b>
-                <br>
             <em><u><h4 class="heading">Ingredients: </h4></u></em>
-            <br>
                 <b><p class="info">{{dish.ingredients}}</p></b>
-                <br>
-            <br>
             <em><u><h4 class="heading">Steps: </h4></u></em>
-            <br>
                 <b><p class="info">{{dish.steps}}</p></b>
-                <br>
             {% if user.id == dish.user.id %}
-                <br>
                 <a class="btn btn-danger" href="/dish/delete/{{dish.id}}" role="button">Delete Recipe</a>
                 <a class="btn btn-success" href="/dish/edit/{{dish.id}}" role="button">Edit Recipe</a>
 
@@ -99,7 +80,7 @@
     </div>
 
                         
-            <div class="right_side">
+            <div class="reviews">
 
                 <form action="/review/add" method="post" id="review" review="{{recipe.id}}">
                     {% csrf_token %}

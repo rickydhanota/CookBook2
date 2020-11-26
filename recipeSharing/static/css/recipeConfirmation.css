@@ -12,14 +12,14 @@
     background-size: cover;
     /* background-color: #dbd7d6; */
 }
-.left_side{
+/* .left_side{
     display: inline-block;
 }
 .right_side{
     display: inline-block;
     vertical-align: top;
     margin-left: 50px;
-}
+} */
 footer a{
     color: black;
 }
@@ -29,3 +29,17 @@ footer{
 h1{
     padding-top: 10px;
 }
+.dish{
+    display: flex;
+}
+.flex-child{
+    flex: 1;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
+    margin-bottom: 50px;
+} 
+/* .flex-child:second-child {
+    margin-top: 100px;
+}  */
