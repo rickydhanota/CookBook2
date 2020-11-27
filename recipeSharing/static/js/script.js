@@ -40,6 +40,7 @@ $(document).ready(function(){
     })
 
     $('#review').submit(function(e){
+        alert("hi");
         e.preventDefault()
         $.ajax({
             url: "/review/add",
@@ -98,3 +99,6 @@ $(document).ready(function(){
 
 
 })
+
+
+

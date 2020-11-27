@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 import re, bcrypt
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class UserManager(models.Manager):
@@ -56,6 +57,18 @@ class Dessert(models.Model):
     steps = models.TextField()
     dessertImage = models.ImageField(null = True)
     user = models.ForeignKey(User, related_name = "dessert_recipes", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+class Review(models.Model):
+    feedback = models.TextField()
+    rating = models.IntegerField(default = 0,
+        validators = [
+                MaxValueValidator(5),
+                MinValueValidator(0),
+            ]
+        )
+    users = models.ManyToManyField(User, related_name = "reviews")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 
