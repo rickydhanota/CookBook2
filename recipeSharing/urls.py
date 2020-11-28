@@ -24,4 +24,5 @@ urlpatterns = [
     path("dessert/delete/<int:id>", views.deleteDish),
     path("dessert/edit/<int:id>", views.editDessert),
     path("dessert/confirmEdits/<int:id>", views.confirmDessertEdits),
+    path("addReview/", views.addReview, name = "addReview"),
 ]
