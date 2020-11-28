@@ -40,15 +40,16 @@ $(document).ready(function(){
     })
 
     $('#review').submit(function(e){
-        alert("hi");
+        // alert("adding review");
         e.preventDefault()
+        console.log("hi");
         $.ajax({
-            url: "/review/add",
+            url: "/addReview/",
             method: "POST",
             data: $(this).serialize(),
             success: function(serverResponse){
                 console.log(serverResponse)
-                $('#reviews').html(serverResponse);
+                // $('#reviews').html(serverResponse);
                 // reset everything in the form action having id review
                 $('#review').trigger('reset');
             

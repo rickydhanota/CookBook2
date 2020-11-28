@@ -85,6 +85,7 @@
                 <div class="grid-child">
                     <u><em><h3 class="text text-left">Reviews:</h3></em></u>
                     <br>
+
                     
                     <!-- <div class="form-group row" id="reviews">
                         {% for review in Reviews %}
@@ -118,11 +119,11 @@
                 </div>
 
             <div class="grid-child">
-                <form action="/review/add" method="post" id="review" review="{{recipe.id}}">
+                <em><u><h4 class="text">Add Review: </h4></u></em>
+                <form action="addReview/" method="POST" id="review" review="{{recipe.id}}">
                     {% csrf_token %}
-                        <em><u><h4 class="text">Add Review: </h4></u></em>
                         <br>
-                        <textarea class="form-control mb-3" id="content" name="Review" rows="2" cols="55"></textarea>
+                        <textarea class="form-control mb-3" id="content" name="review" rows="2" cols="55"></textarea>
 
                         <div class="col-12 mb-3">
                             <!-- <label for="Rating">Rating:</label>
