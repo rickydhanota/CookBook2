@@ -69,6 +69,7 @@ class Review(models.Model):
             ]
         )
     users = models.ManyToManyField(User, related_name = "reviews")
+    recipe = models.ForeignKey(Recipe, related_name = "reviews", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 
