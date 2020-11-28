@@ -223,9 +223,8 @@ def confirmDessertEdits(request, id):
 def addReview(request, id):
     user = User.objects.get(id=request.session['userid'])
     dish = Recipe.objects.get(id = id)
-    this_review = Review.objects.create(feedback = request.POST["review"], rating = request.POST["rate"], recipe = dish)
+    this_review = Review.objects.create(feedback = request.POST["review"], rating = request.POST["rate"], recipe = dish, users = user)
 
-    this_review.users.add(user)
     context = {
         "user": user,
         "this_review": this_review,

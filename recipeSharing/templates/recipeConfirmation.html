@@ -87,8 +87,12 @@
                     <br>
 
                     {% for review in dish.reviews.all %}
-                        {{review.feedback}}
-                        {{review.rating}}
+                    <!-- dish = Recipe.objects.get(id = id) -->
+                        <h4>{{review.users.first_name}}</h4>
+                        <p>{{review.feedback}}</p>
+                        <p>{{review.rating}}</p>
+                        <p>{{review.created_at}}</p>
+
                     {% endfor %}
                     <!-- <div class="form-group row" id="reviews">
                         {% for review in Reviews %}
@@ -123,7 +127,7 @@
 
             <div class="grid-child">
                 <em><u><h4 class="text">Add Review: </h4></u></em>
-                <form action="addReview/{{dish.id}}" method="POST" id="review" dish = {{dish.id}} review="{{recipe.id}}">
+                <form action="addReview/{{dish.id}}/" method="POST" id="review" dish = {{dish.id}} review="{{recipe.id}}">
                     {% csrf_token %}
                         <br>
                         <textarea class="form-control mb-3" id="content" name="review" rows="2" cols="55"></textarea>

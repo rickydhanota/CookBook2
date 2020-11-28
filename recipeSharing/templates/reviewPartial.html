@@ -2,6 +2,7 @@
     <br>
 
     {% for review in dish.reviews.all %}
+    <h4>{{review.users.first_name}}</h4>
         {{review.feedback}}
         {{review.rating}}
     {% endfor %}
