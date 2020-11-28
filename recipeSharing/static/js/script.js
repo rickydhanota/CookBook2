@@ -43,14 +43,16 @@ $(document).ready(function(){
         // alert("adding review");
         e.preventDefault()
         console.log("hi");
+        var dish_id = $(this).attr("dish")
         $.ajax({
-            url: "/addReview/",
+            url: `/addReview/${dish_id}/`,
             method: "POST",
             data: $(this).serialize(),
             success: function(serverResponse){
                 console.log(serverResponse)
                 // $('#reviews').html(serverResponse);
                 // reset everything in the form action having id review
+                $("#partial_for_review").html(serverResponse);
                 $('#review').trigger('reset');
             
             }

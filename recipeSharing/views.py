@@ -220,13 +220,19 @@ def confirmDessertEdits(request, id):
     dessert.save()
     return redirect(f"/dessertConfirmation/{dessert.id}/")
 
-def addReview(request):
+def addReview(request, id):
     user = User.objects.get(id=request.session['userid'])
-    this_review = Review.objects.create(feedback = request.POST["review"], rating = request.POST["rate"])
-    
-    this_review.users.add(user)
+    dish = Recipe.objects.get(id = id)
+    this_review = Review.objects.create(feedback = request.POST["review"], rating = request.POST["rate"], recipe = dish)
 
-    return HttpResponse("This from the backend, adding a review")
+    this_review.users.add(user)
+    context = {
+        "user": user,
+        "this_review": this_review,
+        "dish": dish,
+    }
+
+    return render(request, "reviewPartial.html", context)
 
 
 # Create your views here.
