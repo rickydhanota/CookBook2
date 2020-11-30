@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/recipeconfirmation.css' %}">
 </head>
@@ -52,117 +53,80 @@
             </form>
         </div>
     </nav>
-    
-    <div class="left_side">
-        <div class="col-12">
-            <img src="{{dessert.image.url}}" width="500" height="500">
-            <!-- Might want to try doing auto here -->
-        </div>
-    
-        {% if messages %}
-            <br>
-            {% for message in messages %}
-                <ul>   
-                    <h5><li class="text text-danger">{{ message }}</li></h5>
-                </ul>    
-            {% endfor %}
-        {% endif %}
-    
-        <div class="col-12">
-            <br>
-            <em><strong><h1>{{dessert.title}}</h1></strong></em>
-            <br><br>
-            <!-- <em><h4>Average rating: {{rating}} stars</h4></em>
-            <br> -->
-            <em><h6>Created by: {{dessert.user.first_name}} {{dessert.user.last_name}}</h6></em>
-            <br>
-            <em><u><h4 class="heading">Description: </h4></u></em>
-            <br>
-                <b><p class="info">{{dessert.description}}</p></b>
-                <br>
-            <em><u><h4 class="heading">Ingredients: </h4></u></em>
-            <br>
-                <b><p class="info">{{dessert.ingredients}}</p></b>
-                <br>
-            <br>
-            <em><u><h4 class="heading">Steps: </h4></u></em>
-            <br>
-                <b><p class="info">{{dessert.steps}}</p></b>
-                <br>
-            {% if user.id == dessert.user.id %}
-                <br>
-                <a class="btn btn-danger" href="/dessert/delete/{{dessert.id}}" role="button">Delete Recipe</a>
-                <a class="btn btn-success" href="/dessert/edit/{{dessert.id}}" role="button">Edit Recipe</a>
 
-            {% endif %}
-        </div>
+
+<div class= "dish">
+    <div class="flex-child">
+        <img src="{{dessert.image.url}}" width="500" height="500">
+        <!-- Might want to try doing auto here -->
     </div>
 
-                        
-            <div class="right_side">
+    <div class="flex-child">
+        <em><strong><h1>{{dessert.title}}</h1></strong></em>
+        <!-- <em><h4>Average rating: {{rating}} stars</h4></em>
+        <br> -->
+        <em><h6>Created by: {{dessert.user.first_name}} {{dessert.user.last_name}}</h6></em>
+        <br>
+        <em><u><h4 class="heading">Description: </h4></u></em>
+            <b><p class="info">{{dessert.description}}</p></b>
+        <em><u><h4 class="heading">Ingredients: </h4></u></em>
+            <b><p class="info">{{dessert.ingredients}}</p></b>
+        <em><u><h4 class="heading">Steps: </h4></u></em>
+            <b><p class="info">{{dessert.steps}}</p></b>
 
-                <form action="/review/add" method="post" id="review" review="{{recipe.id}}">
-                    {% csrf_token %}
+        {% if user.id == dessert.user.id %}
+            <a class="btn btn-danger" href="/dessert/delete/{{dessert.id}}" role="button">Delete Recipe</a>
+            <a class="btn btn-success" href="/dessert/edit/{{dessert.id}}" role="button">Edit Recipe</a>
 
-                    <div class="form-group">
-                        <em><u><h4 class="text">Add Review: </h4></u></em>
-                        <br>
-                        <textarea class="form-control" id="content" name="Review" rows="2" cols="55"></textarea>
-                    </div>
+        {% endif %}
+    </div>
+</div>
 
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <label for="Rating">Rating:</label>
-                            <select name="Rating" id="Rating" class="content">
-                                <option value="1">1 - Terrible</option>
-                                <option value="2">2 - Bad</option>
-                                <option value="3">3 - Marginal</option>
-                                <option value="4">4 - Good</option>
-                                <option value="5">5 - Excellent</option>                            
-                            </select>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit Review</button>
-                    <input name="recipe_id" type="hidden" value="{{recipe.id}}">  
-
-                </form>
-
-                    <br><br>
+                    
+        <div class="grid-container">
+            <div class="grid-child" id = "partial_for_dessert_review">
                 <u><em><h3 class="text text-left">Reviews:</h3></em></u>
                 <br>
 
-                <!-- <div class="form-group row" id="reviews">
-                    {% for review in Reviews %}
-                        <br><br>
-                        <div class="card-deck col-12 bg-dark-rounded ajax" id="{{review.id}}">
-                            <br>
-                            <div class="card mb-4 bg-light rounded border border-dark">
-                                <b>Rating: {{review.rating}} stars</b>
-                                <br>
-                                <strong>{{review.reviewer.first_name}}</strong> says: <em>{{review.content}}</em>
-                                <br>
-                                <em>Posted On: {{review.created_at}}</em>
-                                <br>
-                                    {% if user.id == review.reviewer.id %}
-                                        <div class="form-group row">
-                                            <div class="col-12">
-                                                <form action="/review/delete/{{review.id}}" method="POST" class="delete_review" review="{{review.id}}">
-                                                    {% csrf_token %}
-                                                    <button type="submit" class="btn btn-danger">Delete Review</button>
-                                                    <input name="recipe_id" type="hidden" value="{{recipe.id}}">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                <br>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div> -->
+                {% for dessert in dessert.reviews.all %}
+                <!-- dish = Recipe.objects.get(id = id) -->
+                    <h4>{{dessert.users.first_name}} {{dessert.users.last_name.0}}. {{dessert.created_at|date:"SHORT_DATE_FORMAT" }}</h4>
+                    <p>{{dessert.feedback}}</p>
+                    <p>{{dessert.rating}} Stars</p>
+
+                {% endfor %}
 
             </div>
 
+        <div class="grid-child">
+            <em><u><h4 class="text">Add Review: </h4></u></em>
+            <form action="addDessertReview/{{dessert.id}}/" method="POST" id="dessertReview" dessert = {{dessert.id}} review="{{dessert.id}}">
+                {% csrf_token %}
+                    <br>
+                    <textarea class="form-control mb-3" id="content" name="review" rows="2" cols="55"></textarea>
+
+                    <div class="col-12 mb-3">
+
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                          </div>
+
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                    <input name="dessert_id" type="hidden" value="{{dessert.id}}">  
+            </form>
+        </div>
+    </div>
 
             <div class="col-12">
                 <footer class="my-5 pt-5 light text-muted text-center text-center">
@@ -179,4 +143,5 @@
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="{% static 'js/script.js' %}"></script>
     </body>
+
 </html>

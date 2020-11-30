@@ -234,4 +234,18 @@ def addReview(request, id):
     return render(request, "reviewPartial.html", context)
 
 
+def addDessertReview(request, id):
+    user = User.objects.get(id=request.session['userid'])
+    dessert = Dessert.objects.get(id = id)
+    this_dessert = DessertReview.objects.create(feedback = request.POST["review"], rating = request.POST["rate"], dessert = dessert, users = user)
+
+    context = {
+        "user": user,
+        "this_dessert": this_dessert,
+        "dessert": dessert,
+    }
+
+    return render(request, "reviewDessertPartial.html", context)
+
+
 # Create your views here.
