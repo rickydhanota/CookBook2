@@ -75,7 +75,7 @@
     <div>
         {% for dessert in desserts %}
                 <div id="image_container">
-                    <a href="/dessertConfirmation/{{dessert.id}}/"><img src="{{dessert.image.url}}" width="400" height="350"></a>
+                    <a href="/dessertConfirmation/{{dessert.id}}/"><img src="/media/{{dessert.dessertImage}}" width="400" height="350"></a>
 
                     <div id="dessert_details">
                         <em><h2><strong>{{dessert.title}}</strong></h2></em>
