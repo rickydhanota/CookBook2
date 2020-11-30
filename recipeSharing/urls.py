@@ -25,4 +25,6 @@ urlpatterns = [
     path("dessert/edit/<int:id>", views.editDessert),
     path("dessert/confirmEdits/<int:id>", views.confirmDessertEdits),
     path("addReview/<int:id>/", views.addReview, name = "addReview"),
+    path("addDessertReview/<int:id>/", views.addDessertReview, name = "addDessertReview"),
+
 ]

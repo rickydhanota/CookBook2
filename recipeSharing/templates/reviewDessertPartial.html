@@ -1,0 +1,9 @@
+<u><em><h3 class="text text-left">Reviews:</h3></em></u>
+<br>
+
+{% for dessert in dessert.reviews.all %}
+    <h4>{{dessert.users.first_name}} {{dessert.users.last_name.0}}. {{dessert.created_at|date:"SHORT_DATE_FORMAT" }}</h4>
+    <p>{{dessert.feedback}}</p>
+    <p>{{dessert.rating}} Stars</p>
+
+{% endfor %}

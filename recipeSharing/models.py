@@ -73,5 +73,18 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)
 
+class DessertReview(models.Model):
+    feedback = models.TextField()
+    rating = models.IntegerField(default = 0,
+        validators = [
+                MaxValueValidator(5),
+                MinValueValidator(0),
+            ]
+        )
+    users = models.ForeignKey(User, related_name = "dessert_reviews", on_delete = models.CASCADE)
+    dessert = models.ForeignKey(Dessert, related_name = "reviews", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+
 
 # Create your models here.
