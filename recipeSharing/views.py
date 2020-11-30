@@ -244,6 +244,7 @@ def addDessertReview(request, id):
         "this_dessert": this_dessert,
         "dessert": dessert,
     }
+    print("made it to the end of python")
 
     return render(request, "reviewDessertPartial.html", context)
 

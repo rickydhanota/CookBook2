@@ -69,7 +69,7 @@ $(document).ready(function(){
                 console.log(serverResponse)
                 // $('#reviews').html(serverResponse);
                 // reset everything in the form action having id review
-                $("partial_for_dessert_review").html(serverResponse);
+                $("#partial_for_dessert_review").html(serverResponse);
                 $('#dessertReview').trigger('reset');
             
             }
