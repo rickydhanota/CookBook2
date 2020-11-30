@@ -75,7 +75,7 @@
     <div>
         {% for dish in dishes %}
                 <div id="image_container">
-                    <a href="/recipeConfirmation/{{dish.id}}/"><img src="{{recipe.image.url}}" width="400" height="350"></a>
+                    <a href="/recipeConfirmation/{{dish.id}}/"><img src="/media/{{dish.dishImage}}" width="400" height="350"></a>
                     <div id="dessert_details">
                         <em><h2><strong>{{dish.title}}</strong></h2></em>
                         <em><h4>Created by: {{dish.user.first_name}} {{dish.user.last_name}}</h4></em>

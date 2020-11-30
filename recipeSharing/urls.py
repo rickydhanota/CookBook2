@@ -1,6 +1,9 @@
 from django.urls import path 
 from . import views
 
+from django.conf import settings 
+from django.conf.urls.static import static 
+
 urlpatterns = [
     path("", views.index, name = "home"),
     path("sign_in/", views.sign_in, name = "sign_in"),
@@ -14,17 +17,19 @@ urlpatterns = [
     path("createRecipe/", views.createRecipe, name = "createRecipe"),
     path("addRecipe/", views.addRecipe, name = "addRecipe"),
     path("recipeConfirmation/<int:id>/", views.recipeConfirmation, name = "recipeConfirmation"),
-    path("dish/delete/<int:id>", views.deleteDish),
-    path("dish/edit/<int:id>", views.editDish),
+    path("dish/delete/<int:id>/", views.deleteDish),
+    path("dish/edit/<int:id>/", views.editDish),
     path("dish/confirmEdits/<int:id>", views.confirmEdits),
     path("popularDesserts/", views.popularDesserts, name = "popularDesserts"),
     path("createDessertRecipe/", views.createDessertRecipe, name = "createDessertRecipe"),
     path("addDessertRecipe/", views.addDessertRecipe, name = "addDessertRecipe"),
     path("dessertConfirmation/<int:id>/", views.dessertConfirmation, name = "dessertConfirmation"),
-    path("dessert/delete/<int:id>", views.deleteDish),
-    path("dessert/edit/<int:id>", views.editDessert),
+    path("dessert/delete/<int:id>/", views.deleteDessert),
+    path("dessert/edit/<int:id>/", views.editDessert),
     path("dessert/confirmEdits/<int:id>", views.confirmDessertEdits),
     path("addReview/<int:id>/", views.addReview, name = "addReview"),
     path("addDessertReview/<int:id>/", views.addDessertReview, name = "addDessertReview"),
 
 ]
+if settings.DEBUG: 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
